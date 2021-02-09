@@ -27,7 +27,7 @@ def RSI(df):
     df['RSI-6'] = computeRSI(df['Close'],6)
     df['RSI-7'] = computeRSI(df['Close'],7)
     df['RSI-8'] = computeRSI(df['Close'],8)
-    df['RSI-9'] = computeRSI(df['Close'],1)
+    df['RSI-9'] = computeRSI(df['Close'],9)
     df['RSI-10'] = computeRSI(df['Close'],10)
     df['RSI-11'] = computeRSI(df['Close'],11)
     df['RSI-12'] = computeRSI(df['Close'],12)
@@ -57,21 +57,8 @@ ed = datetime.datetime(2017,12,31)
 Dow30 = ['MMM','AXP','AAPL','BA','CAT','CVX','CSCO','KO','DIS','DD','XOM','GE','GS','HD','IBM','INTC','JNJ','JPM','MCD',
                  'MRK','MSFT','NKE','PFE','PG','TRV','UNH','VZ','WMT']
 
-# for stock in Dow30:
-#     df = web.DataReader(stock,'yahoo',start,end)
-#     df = RSI(df)
-#     df = SMA(df,50)
-#     df = SMA(df,200)
-
-#     # directory = stock
-#     # parent_dir = "/finance/buysellsignalpaper/python/Dataset/"
-#     # path = os.path.join(parent_dir, directory) 
-#     # os.mkdir(path) 
-
-#     df.to_csv('Dataset/train/'+str(stock)+'19972006.csv')
-
 for stock in Dow30:
-    df = web.DataReader(stock,'yahoo',st,ed)
+    df = web.DataReader(stock,'yahoo',start,end)
     df = RSI(df)
     df = SMA(df,50)
     df = SMA(df,200)
@@ -81,7 +68,20 @@ for stock in Dow30:
     # path = os.path.join(parent_dir, directory) 
     # os.mkdir(path) 
 
-    df.to_csv('Dataset/test/'+str(stock)+'20072017.csv')
+    df.to_csv('Dataset/train/'+str(stock)+'19972006.csv')
+
+# for stock in Dow30:
+#     df = web.DataReader(stock,'yahoo',st,ed)
+#     df = RSI(df)
+#     df = SMA(df,50)
+#     df = SMA(df,200)
+
+#     # directory = stock
+#     # parent_dir = "/finance/buysellsignalpaper/python/Dataset/"
+#     # path = os.path.join(parent_dir, directory) 
+#     # os.mkdir(path) 
+
+#     df.to_csv('Dataset/test/'+str(stock)+'20072017.csv')
   
 
 
